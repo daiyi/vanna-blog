@@ -1,0 +1,31 @@
+{% extends "blog_base.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block header_image %}
+  <div class="title-image">
+    <img src="/img/tuolumne-road.jpg">
+  </div>
+{% endblock header_image %}
+
+{% block content %}
+  <section>
+    {% for blog in section.pages %}
+      <article>
+        {% if blog.extra.image %}
+          <img src="{{blog.slug}}/{{blog.extra.image}}"/>
+        {% endif %}
+
+        {{ macros::blog_summary(blog=blog) }}
+
+        {% if blog.description %}
+          {{blog.description }}
+        {% elif blog.summary %}
+          {{blog.summary | safe }}
+        {% else %}
+          {{blog.content | safe }}
+        {% endif %}
+      </article>
+    {% endfor %}
+  </section>
+{% endblock content %}

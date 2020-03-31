@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="{{config.extra.description}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="{{config.extra.theme_color}}">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+
+    <meta property="og:url" content="{{current_url}}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="
+      {% block og_title %}{{ config.title }}
+      {% endblock og_title %}">
+    <meta property="og:image" content="{% block og_image %}/img/tuolumne-road.jpg{% endblock og_image %}">
+    <meta property="og:description" content="{% block og_description %}{{config.extra.description}}{% endblock og_description %}">
+    <meta property="og:site_name" content="{{config.title}}">
+    <meta property="article:author" content="vanna">
+    <meta name="twitter:card" content="summary">
+    {# <meta name="twitter:site" content=""> #}
+    <meta name="twitter:creator" content="@daiyitastic">
+    <meta name="twitter:url" content="{{current_url}}">
+    <meta name="twitter:title" content="{% block tw_title %}{{ config.title }}
+      {% endblock tw_title %}">
+    <meta name="twitter:description" content="{% block tw_description %}{{config.extra.description}}{% endblock tw_description %}">
+    <meta name="twitter:image" content="{% block tw_image %}/img/tuolumne-road.jpg{% endblock tw_image %}">
+
+    {# todo #}
+    <link rel="manifest" href="site.webmanifest">
+    {# todo #}
+    {# <link rel="apple-touch-icon" href="icon.png"> #}
+
+    <link rel="stylesheet" href="/main.css">
+
+    <title>
+      {% block title %}{{ config.title }}
+      {% endblock title %}
+    </title>
+  </head>
+
+  <body>
+    {% block header %}
+      <header>
+        <h1>{{ config.title }}</h1>
+      </header>
+    {% endblock header %}
+
+    <main>
+      <article>
+        {% block content %} 
+          I am a fast house.
+        {% endblock content %}
+
+      </article>
+    </main>
+
+    <footer>
+      {% block footer %}{% endblock footer %}
+    </footer>
+
+    <script>
+      console.log("debug", {{__tera_context}})
+    </script>
+  </body>
+
+</html>

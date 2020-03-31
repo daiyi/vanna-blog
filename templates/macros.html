@@ -1,0 +1,16 @@
+{% macro blog_summary(blog, header_size="h3") %}
+    <{{header_size}}>
+        <a href="{{ blog.permalink }}">{{ blog.title }}</a>
+    </{{header_size}}>
+    <div class="subtitle">
+        <small>
+            <strong>{{ blog.date }}</strong>
+        </small>
+    </div>
+{% endmacro blog_summary %}
+
+{# how to use #}
+{# 
+    {% import "macros.html" as macros %}
+    {{ macros::function_name(params) }} 
+#}

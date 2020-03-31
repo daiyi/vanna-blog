@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block og_title %}{{ config.extra.blog.title }}
+{% endblock og_title %}
+
+{% block title %}{{ config.extra.blog.title }}
+{% endblock title %}
+{% block tw_title %}{{ config.extra.blog.title }}
+{% endblock tw_title %}
+
+{% block og_image %}/img/tuolumne-road.jpg{% endblock og_image %}
+{% block tw_image %}/img/tuolumne-road.jpg{% endblock tw_image %}
+
+{% block og_description %}{% endblock og_description %}
+{% block tw_description %}{% endblock tw_description %}
+
+{% block header %}
+  <header class="blog-heading">
+    <div class="title-container">
+      <div class="title-wrapper">
+        <div class="title">
+
+          <h1>
+            <a href="/blog">{{ config.extra.blog.title }}</a>
+          </h1>
+
+          <div class="subtitle">{{ config.extra.blog.subtitle }}</div>
+        </div>
+        {% block header_image %}{% endblock header_image %}
+      </div>
+    </div>
+    {% block description %}
+      <div class="description">
+        <h3>I am a fast house<br> who created the universe<br> so that I can stare at mountains <br>as many weekends as possible.</h3>
+      </div>
+
+    {% endblock description %}
+  </header>
+{% endblock header %}

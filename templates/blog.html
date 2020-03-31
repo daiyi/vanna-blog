@@ -1,0 +1,29 @@
+{% extends "blog_index.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block header %}
+  <div class="blog">
+    {{ super() }}
+  </div>
+{% endblock header %}
+
+{% block header_image %}{% endblock header_image %}
+
+{% block description %}{% endblock description %}
+
+{% block content %}
+  <article>
+    {{ macros::blog_summary(blog=page) }}
+
+    {{page.content | safe }}
+
+    <div class="blog-footer">
+      {% if page.taxonomies.tags %}
+        {% for tag in page.taxonomies.tags %}
+          <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}"># {{ tag }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </article>
+{% endblock content %}
