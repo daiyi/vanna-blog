@@ -1,4 +1,13 @@
 {% macro blog_summary(blog, header_size="h3") %}
+    {% if blog.taxonomies.locations %}
+        <div class="taxonomy">
+            {% for location in blog.taxonomies.locations %}
+                <small>
+                    <a href="{{ get_taxonomy_url(kind="locations", name=location) | safe }}">{{ location }}</a>
+                </small>
+            {% endfor %}
+        </div>
+    {% endif %}
     <{{header_size}}>
         <a href="{{ blog.permalink }}">{{ blog.title }}</a>
     </{{header_size}}>

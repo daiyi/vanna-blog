@@ -8,9 +8,18 @@
   </div>
 {% endblock header %}
 
-{% block header_image %}{% endblock header_image %}
+{% block header_image %}
+  {% if page.extra.mapbox_static_path %}
+    <img src="https://api.mapbox.com/styles/v1/mapbox/{{ config.extra.map.id }}/static/{% if blog.extra.geojson %}geojson({{ blog.extra.geojson}})/{% endif %}{{page.extra.mapbox_static_path}}/1200x300?access_token={{config.extra.map.token}}&logo=false" loading="lazy"/>
+  {% endif %}
+{% endblock header_image %}
 
 {% block description %}{% endblock description %}
+
+
+{% block main_class %}
+  blog blog-page
+{% endblock main_class %}
 
 {% block content %}
   <article>
@@ -19,11 +28,13 @@
     {{page.content | safe }}
 
     <div class="blog-footer">
-      {% if page.taxonomies.tags %}
-        {% for tag in page.taxonomies.tags %}
-          <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}"># {{ tag }}</a>
-        {% endfor %}
-      {% endif %}
+      <div class="taxonomy">
+        {% if page.taxonomies.tags %}
+          {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}"># {{ tag }}</a>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
   </article>
 {% endblock content %}

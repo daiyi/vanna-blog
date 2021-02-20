@@ -45,14 +45,13 @@
         <h1>{{ config.title }}</h1>
       </header>
     {% endblock header %}
-
-    <main>
-      <article>
-        {% block content %} 
+    <main class="{% block main_class %}{% endblock main_class %}">
+      {% block content %}
+        <article>
           I am a fast house.
-        {% endblock content %}
+        </article>
+      {% endblock content %}
 
-      </article>
     </main>
 
     <footer>

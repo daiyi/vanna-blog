@@ -8,7 +8,7 @@ highlight_code = false
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 generate_rss = true
-taxonomies = [{ name = "tags", rss = false, paginate_by = 10 }]
+taxonomies = [{ name = "tags", rss = false, paginate_by = 10 }, { name = "locations", rss = false, paginate_by = 10 }]
 title = "vanna.coffee"
 
 [extra]
@@ -19,3 +19,7 @@ theme_color = "#6295d3"
 [extra.blog]
 title = "Wheels of Fortune"
 subtitle = "Vanna's great adventure"
+
+[extra.map]
+id = "outdoors-v9"
+token = "pk.eyJ1IjoidGlueXBsYXN0aWNwYW5kYSIsImEiOiJjazA1d2NlcGYwMTFwM2dvMmwxeWc2MW42In0.sfMotIQdV_7xC1uQK5llVg"

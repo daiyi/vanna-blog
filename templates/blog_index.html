@@ -4,28 +4,35 @@
 
 {% block header_image %}
   <div class="title-image">
-    <img src="/img/tuolumne-road.jpg">
+    <img src="/img/tuolumne-road.jpg" loading="lazy" >
   </div>
 {% endblock header_image %}
 
+{% block main_class %}
+  {{super()}} blog-index
+{% endblock main_class %}
+
 {% block content %}
-  <section>
-    {% for blog in section.pages %}
-      <article>
-        {% if blog.extra.image %}
-          <img src="{{blog.slug}}/{{blog.extra.image}}"/>
-        {% endif %}
+  {% for blog in section.pages %}
+    <article>
+      {% if blog.extra.image %}
+        <div class="article-photo">
+          <img src="{{blog.slug}}/{{blog.extra.image}}" loading="lazy"/>
+        </div>
+      {# {% elif blog.extra.mapbox_static_path %}
+        <img src="https://api.mapbox.com/styles/v1/mapbox/{{ config.extra.map.id }}/static/{% if blog.extra.geojson %}geojson({{ blog.extra.geojson}})/{% endif %}{{blog.extra.mapbox_static_path}}/600x430?access_token={{config.extra.map.token}}&logo=false" loading="lazy"/> #}
+      {% endif %}
 
-        {{ macros::blog_summary(blog=blog) }}
+      {{ macros::blog_summary(blog=blog) }}
 
-        {% if blog.description %}
-          {{blog.description }}
-        {% elif blog.summary %}
-          {{blog.summary | safe }}
-        {% else %}
-          {{blog.content | safe }}
-        {% endif %}
-      </article>
-    {% endfor %}
-  </section>
+      {% if blog.description %}
+        <p>{{blog.description }}</p>
+      {% elif blog.summary %}
+        {{blog.summary | safe }}
+      {% else %}
+        {{blog.content | safe }}
+      {% endif %}
+
+    </article>
+  {% endfor %}
 {% endblock content %}
